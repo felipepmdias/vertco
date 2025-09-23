@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vert.co - Cultive mais, descarte menos</title>
-    <meta name="description" content="Transforme qualquer espaço em uma horta urbana com o kit Vert.co. Aprenda a cultivar seus próprios vegetais de forma prática, bonita e sustentável.">
+    <meta name="description" content="Transforme qualquer espaço em uma horta urbana com os kits Vert.co. Aprenda a cultivar seus próprios vegetais de forma prática, bonita e sustentável.">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
 </head>
@@ -17,7 +17,7 @@
             </div>
             <h1>Um novo olhar para o que te alimenta.</h1>
             <p>Com a Vert.co, você transforma qualquer cantinho em uma horta viva. Aprenda, reaproveite, plante e colha.</p>
-            <a href="#kit" class="cta-button">Conheça o Kit</a>
+            <a href="#kits" class="cta-button">Conheça os Kits</a>
         </div>
     </header>
 
@@ -29,10 +29,10 @@
             </div>
         </section>
 
-        <section id="kit" class="kit-details">
+        <section id="products" class="kit-details">
             <div class="container">
-                <h2>Tudo o que você precisa para começar</h2>
-                <p class="kit-price">Kit Vert.co Basic - R$ 49,90</p>
+                <h2>Nossos Produtos</h2>
+                <p class="section-subtitle">Todos os nossos kits são montados com estes itens incríveis, pensados para sua horta urbana.</p>
 
                 <div class="kit-item">
                     <img src="assets/images/cartilha.png" alt="Cartilha Como Fazer uma Horta Vertical">
@@ -68,6 +68,38 @@
             </div>
         </section>
 
+        <section id="kits" class="kits-section">
+            <div class="container">
+                <h2>Escolha o seu Kit Vert.co</h2>
+                <div class="kits-container">
+                    <div class="kit-option">
+                        <img src="assets/images/base-modular-basic.jpg" alt="Kit Vert.co Basic">
+                        <div class="kit-content">
+                            <h3>Kit Basic</h3>
+                            <p class="price">R$ 49,90</p>
+                    </div>
+                        <button class="view-kit-button" data-kit="basic">Ver conteúdo do kit</button>
+                    </div>
+                    <div class="kit-option">
+                        <img src="assets/images/base-modular-medium.png" alt="Kit Vert.co Medium">
+                        <div class="kit-content">                        
+                            <h3>Kit Medium</h3>
+                            <p class="price">R$ 89,90</p>
+                        </div>
+                        <button class="view-kit-button" data-kit="medium">Ver conteúdo do kit</button>
+                    </div>
+                    <div class="kit-option">
+                        <img src="assets/images/base-modular-premium.png" alt="Kit Vert.co Premium">
+                        <div class="kit-content">
+                            <h3>Kit Premium</h3>
+                            <p class="price">R$ 169,90</p>
+                        </div>
+                        <button class="view-kit-button" data-kit="premium">Ver conteúdo do kit</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="cta" class="call-to-action">
             <div class="container">
                 <h2>Pronta para começar sua horta?</h2>
@@ -86,6 +118,89 @@
         </div>
     </footer>
 
-    <script src="assets/js/main.js"></script>
+    <div id="kitModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <div class="modal-header">
+                <h2 id="modalKitName"></h2>
+            </div>
+            <div class="modal-body" id="modalKitContent">
+                </div>
+        </div>
+    </div>
+
+    <script>
+        // Script do Modal
+        const modal = document.getElementById("kitModal");
+        const closeBtn = document.querySelector(".close-button");
+        const viewKitButtons = document.querySelectorAll(".view-kit-button");
+        const modalKitName = document.getElementById("modalKitName");
+        const modalKitContent = document.getElementById("modalKitContent");
+
+        const kitsData = {
+            basic: {
+                name: "Conteúdo do Kit Basic",
+                items: [
+                    { img: "assets/images/base-modular-basic.jpg", name: "Base Modular Basic" },
+                    { img: "assets/images/cartilha.png", name: "Cartilha Guia" },
+                    { img: "assets/images/sementes.png", name: "3 Sachês de Sementes" },
+                    { img: "assets/images/adesivos.png", name: "Cartela de Adesivos" },
+                    { img: "assets/images/adesivos-decorativos.png", name: "Adesivos Decorativos" }                    
+                ]
+            },
+            medium: {
+                name: "Conteúdo do Kit Medium",
+                items: [
+                    { img: "assets/images/base-modular-medium.png", name: "Base Modular Medium" },
+                    { img: "assets/images/cartilha.png", name: "Cartilha Guia" },
+                    { img: "assets/images/sementes.png", name: "3 Sachês de Sementes" },
+                    { img: "assets/images/adesivos.png", name: "Cartela de Adesivos" },
+                    { img: "assets/images/adesivos-decorativos.png", name: "Adesivos Decorativos" }   
+                ]
+            },
+            premium: {
+                name: "Conteúdo do Kit Premium",
+                items: [
+                    { img: "assets/images/base-modular-premium.png", name: "Base Modular Premium" },
+                    { img: "assets/images/cartilha.png", name: "Cartilha Guia" },
+                    { img: "assets/images/sementes.png", name: "3 Sachês de Sementes" },
+                    { img: "assets/images/adesivos.png", name: "Cartela de Adesivos" },
+                    { img: "assets/images/adesivos-decorativos.png", name: "Adesivos Decorativos" }   
+                ]
+            }
+        };
+
+        viewKitButtons.forEach(button => {
+            button.addEventListener("click", () => {
+                const kitId = button.dataset.kit;
+                const kit = kitsData[kitId];
+
+                modalKitName.textContent = kit.name;
+                modalKitContent.innerHTML = ''; // Limpa conteúdo anterior
+
+                kit.items.forEach(item => {
+                    const itemElement = document.createElement('div');
+                    itemElement.classList.add('modal-item');
+                    itemElement.innerHTML = `
+                        <img src="${item.img}" alt="${item.name}">
+                        <p>${item.name}</p>
+                    `;
+                    modalKitContent.appendChild(itemElement);
+                });
+
+                modal.style.display = "block";
+            });
+        });
+
+        closeBtn.onclick = () => {
+            modal.style.display = "none";
+        }
+
+        window.onclick = (event) => {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
 </body>
 </html>
