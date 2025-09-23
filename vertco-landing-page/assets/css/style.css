@@ -1,0 +1,253 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+:root {
+    --primary-color: #2E7D32; /* Verde escuro da marca */
+    --secondary-color: #4CAF50; /* Verde mais claro */
+    --background-color: #F9F9F9;
+    --text-color: #333;
+    --white-color: #FFFFFF;
+    --font-family: 'Poppins', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family);
+    color: var(--text-color);
+    background-color: var(--background-color);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/hero-background.jpg') no-repeat center center/cover;
+    color: var(--white-color);
+    text-align: center;
+    padding: 120px 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero .logo img {
+    max-width: 180px;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    max-width: 1000px;
+}
+
+.cta-button {
+    background-color: var(--secondary-color);
+    color: var(--white-color);
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #388E3C; /* Um tom de verde um pouco mais escuro */
+}
+
+/* General Sections */
+main section {
+    padding: 80px 0;
+    text-align: center;
+}
+
+main section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+/* Mission Section */
+.mission {
+    background-color: var(--white-color);
+}
+
+.mission p {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+}
+
+/* Kit Details Section */
+.kit-details .kit-price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 60px;
+}
+
+.kit-item {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    text-align: left;
+    margin-bottom: 60px;
+}
+
+.kit-item.reverse {
+    flex-direction: row-reverse;
+}
+
+.kit-item img {
+    max-width: 450px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.kit-item .item-description h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+}
+
+/* Call to Action Section */
+.call-to-action {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+.call-to-action h2 {
+    color: var(--white-color);
+}
+
+.call-to-action p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+.cta-button-main {
+    background-color: var(--white-color);
+    color: var(--primary-color);
+    padding: 15px 35px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.cta-button-main:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: var(--white-color);
+    text-align: center;
+    padding: 30px 0;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+/* Responsive Design */
+@media(max-width: 768px) {
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .kit-item, .kit-item.reverse {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .kit-item img {
+        max-width: 100%;
+    }
+}
+
+/* Estilo para o Botão do WhatsApp (geral) */
+.whatsapp-button {
+    background-color: #25D366; /* Verde do WhatsApp */
+    color: var(--white-color);
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    display: inline-block; /* Garante que possa ter margem */
+    margin-top: 20px; /* Espaço acima do botão */
+}
+
+.whatsapp-button:hover {
+    background-color: #1DA851; /* Tom um pouco mais escuro no hover */
+    transform: translateY(-2px); /* Efeito de "levantar" */
+}
+
+/* Estilo específico para o botão no Hero (se for usar lá) */
+.hero .whatsapp-button {
+    margin-top: 25px; /* Mais espaço para separar do botão principal */
+    font-size: 1.1rem;
+    padding: 14px 28px;
+}
+
+/* Estilo para o botão na CTA final (se for usar lá, como uma opção secundária) */
+.cta-secondary-button {
+    background-color: rgba(255, 255, 255, 0.2); /* Fundo translúcido para ser secundário */
+    color: var(--white-color);
+    border: 2px solid var(--white-color); /* Borda branca */
+    margin-top: 25px;
+    font-size: 1rem;
+    padding: 12px 25px;
+}
+
+.cta-secondary-button:hover {
+    background-color: var(--white-color);
+    color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+/* Ajuste para o botão principal da CTA final se houver dois */
+.call-to-action .cta-button-main {
+    margin-bottom: 20px; /* Adiciona um espaço abaixo do botão principal */
+}
+
+/* Responsividade para botões */
+@media(max-width: 480px) {
+    .whatsapp-button, .cta-secondary-button {
+        display: block; /* Botões em blocos pequenos, um embaixo do outro */
+        margin-left: auto;
+        margin-right: auto;
+        width: 80%; /* Ocupa 80% da largura disponível */
+    }
+    .hero .whatsapp-button {
+        margin-top: 15px;
+    }
+    .call-to-action .cta-button-main {
+        margin-bottom: 15px;
+    }
+}
