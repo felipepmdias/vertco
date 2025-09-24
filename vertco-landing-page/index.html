@@ -77,12 +77,12 @@
                         <div class="kit-content">
                             <h3>Kit Basic</h3>
                             <p class="price">R$ 49,90</p>
-                    </div>
+                        </div>
                         <button class="view-kit-button" data-kit="basic">Ver conteúdo do kit</button>
                     </div>
                     <div class="kit-option">
                         <img src="assets/images/base-modular-medium.png" alt="Kit Vert.co Medium">
-                        <div class="kit-content">                        
+                        <div class="kit-content">
                             <h3>Kit Medium</h3>
                             <p class="price">R$ 89,90</p>
                         </div>
@@ -126,6 +126,8 @@
             </div>
             <div class="modal-body" id="modalKitContent">
                 </div>
+            <div class="modal-footer" id="modalFooter">
+                </div>
         </div>
     </div>
 
@@ -136,36 +138,37 @@
         const viewKitButtons = document.querySelectorAll(".view-kit-button");
         const modalKitName = document.getElementById("modalKitName");
         const modalKitContent = document.getElementById("modalKitContent");
+        const modalFooter = document.getElementById("modalFooter");
 
         const kitsData = {
             basic: {
                 name: "Conteúdo do Kit Basic",
+                link: "https://loja.infinitepay.io/sacrarivm/ryz5308-vertco-basic-pre-venda",
                 items: [
                     { img: "assets/images/base-modular-basic.jpg", name: "Base Modular Basic" },
                     { img: "assets/images/cartilha.png", name: "Cartilha Guia" },
                     { img: "assets/images/sementes.png", name: "3 Sachês de Sementes" },
-                    { img: "assets/images/adesivos.png", name: "Cartela de Adesivos" },
-                    { img: "assets/images/adesivos-decorativos.png", name: "Adesivos Decorativos" }                    
+                    { img: "assets/images/adesivos.png", name: "Cartela de Adesivos" }
                 ]
             },
             medium: {
                 name: "Conteúdo do Kit Medium",
+                link: "https://loja.infinitepay.io/sacrarivm/ykj6030-vertco-nature-pre-venda",
                 items: [
                     { img: "assets/images/base-modular-medium.png", name: "Base Modular Medium" },
                     { img: "assets/images/cartilha.png", name: "Cartilha Guia" },
                     { img: "assets/images/sementes.png", name: "3 Sachês de Sementes" },
-                    { img: "assets/images/adesivos.png", name: "Cartela de Adesivos" },
-                    { img: "assets/images/adesivos-decorativos.png", name: "Adesivos Decorativos" }   
+                    { img: "assets/images/adesivos.png", name: "Cartela de Adesivos" }
                 ]
             },
             premium: {
                 name: "Conteúdo do Kit Premium",
+                link: "https://loja.infinitepay.io/sacrarivm/rnh2922-vertco-tropical-pre-venda",
                 items: [
                     { img: "assets/images/base-modular-premium.png", name: "Base Modular Premium" },
                     { img: "assets/images/cartilha.png", name: "Cartilha Guia" },
                     { img: "assets/images/sementes.png", name: "3 Sachês de Sementes" },
-                    { img: "assets/images/adesivos.png", name: "Cartela de Adesivos" },
-                    { img: "assets/images/adesivos-decorativos.png", name: "Adesivos Decorativos" }   
+                    { img: "assets/images/adesivos.png", name: "Cartela de Adesivos" }
                 ]
             }
         };
@@ -175,9 +178,12 @@
                 const kitId = button.dataset.kit;
                 const kit = kitsData[kitId];
 
+                // Limpa o conteúdo anterior
                 modalKitName.textContent = kit.name;
-                modalKitContent.innerHTML = ''; // Limpa conteúdo anterior
+                modalKitContent.innerHTML = '';
+                modalFooter.innerHTML = '';
 
+                // Preenche com os itens do kit
                 kit.items.forEach(item => {
                     const itemElement = document.createElement('div');
                     itemElement.classList.add('modal-item');
@@ -188,6 +194,15 @@
                     modalKitContent.appendChild(itemElement);
                 });
 
+                // Cria e adiciona o botão de compra
+                const buyButton = document.createElement('a');
+                buyButton.href = kit.link;
+                buyButton.target = "_blank"; // Abre o link em uma nova aba
+                buyButton.textContent = "Comprar Agora";
+                buyButton.classList.add('buy-button');
+                modalFooter.appendChild(buyButton);
+
+                // Exibe o modal
                 modal.style.display = "block";
             });
         });

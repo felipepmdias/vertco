@@ -227,6 +227,32 @@ main section h2 {
             margin-top: 10px;
             color: #333;
         }
+        /* Estilos adicionados para o rodapé e botão de compra do Modal */
+        .modal-footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .buy-button {
+            background-color: #2c7b36; /* Verde mais escuro para destaque */
+            color: white;
+            padding: 15px 40px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2em;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .buy-button:hover {
+            background-color: #3ca84a; /* Verde mais claro ao passar o mouse */
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
 
 
 /* Kit Details Section */
